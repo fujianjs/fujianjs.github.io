@@ -1,0 +1,178 @@
+<style>
+    .md-links {
+        min-height: calc(100% - 120px - 5pc - 6em);
+        text-align: center;
+        overflow: auto;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 320px;
+    }
+
+    @media screen and (min-width: 640px) {
+        .md-links {
+            max-width: 640px;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .md-links {
+            max-width: 960px;
+        }
+    }
+
+    @media screen and (min-width: 1280px) {
+        .md-links {
+            max-width: 1280px;
+        }
+    }
+
+    @media screen and (min-width: 1600px) {
+        .md-links {
+            max-width: 1600px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .md-links {
+            min-height: calc(100% - 200px - 5pc - 6em);
+            margin-top: 6em;
+        }
+    }
+    dl, dd {
+      margin: 0;
+      padding: 0;
+    }
+    .md-links-item {
+        /*background: #fff;*/
+        /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);*/
+        height: 250px;
+        /*line-height: 15px;*/
+        margin: 20px 10px;
+        padding: 0px 0px;
+        /*transition: box-shadow 0.25s;*/
+    }
+
+    .md-links a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .md-links li {
+        width: 300px;
+        float: left;
+        list-style: none;
+    }
+
+    .md-links-item img {
+        float: left;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 11px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+
+    }
+
+    .md-links-item:hover {
+        /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
+    }
+
+    .md-links-item a:hover{
+        cursor: pointer;
+    }
+
+    .md-links-title {
+        font-size: 20px;
+        line-height: 50px;
+    }
+
+    #scheme-Paradox .mdl-mini-footer{
+        clear: left;
+    }
+    #bottom{
+        position: relative;
+    }
+    .rank-title {
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      padding-left: 10px;
+    }
+    .md-links-item-hd {
+      height: 50px;
+      line-height: 50px;
+      margin-bottom: 10px;
+      text-align: left;
+      font-size: 22px;
+    }
+    .md-links-item-hd em {
+      float: left;
+      margin-right: 10px;
+      color: #bbb;
+    }
+    .md-links-item-hd span {
+      float: left;
+      color: #3a73ad;
+    }
+    .md-links-item-bd-avatar {
+      float: left;
+      margin-right: 15px;
+    }
+    .md-links-item-bd-intro {
+      text-align: left;
+      overflow: hidden;
+    }
+    .md-links-item-bd-intro a {
+      color: #87b300;
+      font-size: 16px;
+    }
+    .md-links-item-bd-intro a:hover {
+      color: #709400;
+    }
+    .md-links-item-bd {
+      margin-bottom: 10px;
+    }
+    p {
+      margin: 0;
+    }
+    .md-links-item-motto {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color:#999;
+      font-size: 14px;
+      text-align: left;
+    }
+
+</style>
+<h1 class="rank-title">英雄榜</h1>
+<ul class="md-links">
+    <% if (site.data.links) { %>
+        <% for (var i in site.data.links) { %>
+            <li class="md-links-item">
+              <div class="md-links-item-hd clearfix">
+                <em><%= site.data.links[i].order %></em><span class="md-links-title"><%= i %></span>
+              </div>
+              <div class="md-links-item-bd clearfix">
+                <div class="md-links-item-bd-avatar"><img src="<%= site.data.links[i].avatar %>" alt="<%= i %>" width="72px"/></div>
+                <div class="md-links-item-bd-intro">
+                  <dl>
+                    <dd><a href="<%= site.data.links[i].blog %>" target="_blank">博客</a></dd>
+                    <dd><a href="<%= site.data.links[i].gitrepo %>" target="_blank">Github</a></dd>
+                    <dd><a href="<%= site.data.links[i].link %>" target="_blank">个人站点</a></dd>
+                  </dl>
+                </div>
+              </div>
+              <p class="md-links-item-motto"><%= site.data.links[i].descr %></p>
+            </li>
+        <% } %>
+    <% } %>
+</ul>
+
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight() )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
+            $('#bottom').css('bottom', '-' + footerBottom + 'px');
+        }
+    };
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
