@@ -69,9 +69,16 @@
         height: 100px;
         border-radius: 50px;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 11px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
     }
-
+    .md-links-item a:hover img {
+      -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      -o-transform: scale(1.2);
+      transform: scale(1.2);
+    }
     .md-links-item:hover {
         /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
     }
@@ -150,7 +157,7 @@
                 <em><%= (+i)+1 %></em><span class="md-links-title"><%= site.data.links[i].name %></span>
               </div>
               <div class="md-links-item-bd clearfix">
-                <div class="md-links-item-bd-avatar"><img src="<%= site.data.links[i].avatar %>" alt="<%= site.data.links[i].name %>" width="72px"/></div>
+                <div class="md-links-item-bd-avatar"><a href="<%= site.data.links[i].website %>" target="_blank"><img src="<%= site.data.links[i].avatar %>" alt="<%= site.data.links[i].name %>" width="72px"/></a></div>
                 <div class="md-links-item-bd-intro">
                   <dl>
                     <dd><a href="<%= site.data.links[i].blog %>" target="_blank">博客</a></dd>
